@@ -51,10 +51,11 @@ window.addEventListener('scroll', function() {
 })
 
 /* ScrollReveal: Mostrar elementos quando der scroll na página */
+/* tenho que arrumar isso aqui ainda */     
 const scrollReveal = ScrollReveal({
   origin: 'top',
-  distance: '30px',
-  duration: 700,
+  distance: '1px',
+  duration: 900,
   reset: true
 })
 
