@@ -1,0 +1,678 @@
+/* RESET = comportamento padrão ========================*/
+* {
+  /* o asteristico (*) serve  para pegar todas as tags */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*aqui estou tirando os espaços por padrão do navegador*/
+}
+
+ul {
+  list-style: none; /*para não mostrar os pontinhos no menu nem e mais nenhum ul*/
+}
+
+a {
+  text-decoration: none; /*para tirar a linha de decoração da tag (a) */
+}
+
+img {
+  /*tamanho da imagem*/
+  width: 100%; /*largura*/
+  height: auto; /*altura*/
+}
+
+/* variables ========================*/
+:root {
+  /*raiz começo do codigo cabeçalho*/
+  --header-height: 4.5rem; /*altura*/
+
+  /* colors */
+  --hue: 280;
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+
+  /*fonts*/
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+
+  --title-font: "poppins", sans-serif;
+  --body-font: "DM Sans", sans-serif;
+}
+
+.logo {
+  /*atravez do span dividi a logo esse aqui é o primeiro lado*/
+  font: 700 2rem var(--title-font);
+  color: var(--title-color);
+}
+
+.logo span {
+  /*atravez do span essa é a segunda parte do titulo*/
+  color: var(--base-color);
+}
+.logo-alt span {
+  color: white;
+}
+
+#header {
+  /*cabeçalho*/
+  border-bottom: 1px solid black; /*aqui estou configurando a borda de baixo do titulo */
+  margin-bottom: 2rem;
+  display: flex;
+
+  position: absolute;
+  top: 0;
+  left: 0; /*  esquerda    */
+  z-index: 100;
+  background-color: var(--body-color);
+  width: 100%; /* largura  */
+}
+
+#header.scroll {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 15); /*    aqui estou fazendo a sombra do titulo do site */
+}
+
+/* Base ========================*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /*corpo do html*/
+  font: 400 1rem var(--body-font);
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased; /*todos os textos irão receber uma fonte suavizada (antialiased)*/
+}
+
+.title {
+  /*sub títulos*/
+  font: 700 var(--title-font-size) var(--title-font);
+  color: var(--title-color);
+  -webkit-font-smothing: auto;
+}
+/*Botão (agendar um horario)*/
+.button {
+  /*      aqui estamos atribuindo a cor de tras do botão       */
+  background-color: var(--base-color);
+  color: var(--text-color-light); /* cor do texte do botão   */
+  height: 3.5rem; /*height = altura*/
+  display: inline-flex; /*display = mostrar*/
+  align-items: center;
+  padding: 0 2rem; /* para fazer os espaços laterais em cima e em baixo do botão: em cima e em baixo(0) laterais(2)*/
+  border-radius: 0.25rem;
+  font: 500 1rem var(--body-font);
+  transition: background 0.1s; /*transição de cores*/
+}
+
+.button:hover {
+  background: var(--base-color-alt);
+}
+
+/*para dividir as paginas*/
+.divider-1 {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1),
+    hsla(var(--hue), 65%, 88%, 0.34)
+  );
+}
+
+.divider-2 {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34),
+    hsla(var(--hue), 36%, 57%, 1)
+  );
+}
+
+/* layout ======================== */
+/*  aqui sao os layouts por padrão        */
+.container {
+  /*recipientes*/
+  margin-left: 1.5rem; /*margem esquerda*/
+  margin-right: 1.5rem; /*margem direita*/
+}
+
+.grid {
+  /*rede de espaços       ????/ */
+  /*espaçamento dos textos de baixo*/
+  display: grid;
+  gap: 2rem;
+}
+
+/*       aqui estou editando todas as sections           */
+.section {
+  padding: calc(5rem + var(--header-height)) 0; 
+} 
+
+.section .title {
+  margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
+}
+
+.section header {
+  margin-bottom: 4rem;
+}
+
+.section header strong {
+  color: var(--base-color);
+}
+
+/*  navegation      */
+nav {
+  height: var(--header-height);
+  display: flex;
+  align-items: center; /* alinhar os items do nav*/
+  justify-content: space-between; /*  ???  */
+  width: 100%; /* largura  */
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li a {
+  transition: color 0.2s;
+  position: relative;
+}
+
+nav ul li a:hover {
+  /*    hover = flutuar  */
+  color: var(
+    --base-color
+  ); /* aqui estou confugurando a cor das opçoẽs do menu */
+}
+
+nav ul li a::after {
+  content: "";
+  width: 0%; /*largura*/
+  height: 2px; /*altura*/
+  background: var(--base-color);
+
+  position: absolute;
+  /*esse left e bottom estou usando para colocar uma barrinha em baixo*/
+  left: 0; /*  esquerda */
+  bottom: -1.5rem;
+
+  transition: width 0.2s; /* aqui eu configurei a transição do menu (A barrinha que aparece em baixo)*/
+}
+
+nav ul li a:hover::after {
+  width: 100%; /*largura*/
+}
+
+/*  aqui são as configurações para mostrar o menu   */
+nav .menu {
+  opacity: 0;
+  visibility: hidden; /*hidden  =  escondido*/
+  /*     aqui estou editando a transição do munu           */
+  top: -20rem;
+  transition: 0.2s;
+}
+
+nav .menu ul {
+  display: none;
+}
+
+/* mostrar menu (menu aberto) */
+nav.show .menu {
+  opacity: 1;
+  visibility: visible;
+
+  background: var(--body-color); 
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: grid; /*usando o display grid eu liberei o place content para alinhar o menu */
+  place-content: center;
+}
+
+nav.show .menu ul {
+  display: grid;
+}
+
+nav.show ul.grid {
+  gap: 4rem; /*espaçamento do menu*/
+}
+
+/* toggle menu */
+.toggle {
+  color: var(--base-color);
+  font-size: 1.5rem;
+  cursor: pointer; /*aqui é um comando para colocar a mãozinha (quando passar com o cursor por cima do menu =*/
+}
+
+nav .icon-x {
+  /*   aqui estou editando o icone (X)         */
+  visibility: hidden; /*    hidden = escondido */
+  opacity: 0; /*   aqui estou editando a visibilidade do icone (x) */
+
+  position: absolute; /*     não entendi muito bem o que isso faz ainda */
+  /*  aqui estou editando a transição do icone (X) quando abre o menu*/
+  top: -1.5rem;
+  right: 1.5rem;
+
+  transition: 0.2s;
+}
+
+nav.show div.icon-x {
+  visibility: visible;
+  opacity: 1;
+  top: 1.5rem;
+}
+
+/* aqui estou editando a estrutura e a imagem da pagina inicial do site  ========================*/
+#home {
+  overflow: hidden;
+}
+
+#home .container {
+  /*retangulo */
+  margin: 0;
+}
+
+#home .image {
+  position: relative; /*aqui eu estou informando que imagem principal é relativa ou seja ela se molda conforme o que instruida a ela. */
+}
+
+#home .image::before {
+  /*essa está configurando a imagem atras da img principal*/
+  content: "";
+  height: 100%; /*  altura */
+  width: 100%; /*   largura       */
+  background: var(--base-color-second);
+  position: absolute;
+  top: -16.8%;
+  left: 16.7%;
+  z-index: 0; /*eixo de profundidade */
+}
+
+#home .image img {
+  position: relative; /*para a imagem  nao imprimir na frente da imagem principal usamos = position: relative;*/
+  right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before {
+  border-radius: 0.25rem;
+}
+
+#home .text {
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+#home .text h2 {
+  margin-bottom: 1rem; /*são os espaçamentos dos textos que estão dentro de h2*/
+}
+
+#home .text p {
+  margin-bottom: 2rem; /*são os espaçamentos dos textos que estão dentro de P */
+}
+
+/*=====================  about (sobre) ===========================*/
+#about {
+  background: white;
+}
+
+#about .container {
+  /*retangulo */
+  margin: 0; /*tirando as margens*/
+}
+
+#about .image {
+  position: relative; /*aqui eu estou informando que imagem principal é relativa ou seja ela se molda conforme o que instruida a ela. */
+}
+
+#about .image::before {
+  /*essa está configurando a imagem atras da img principal*/
+  content: "";
+  height: 100%; /*  altura */
+  width: 100%; /*   largura       */
+  background: var(--base-color-second);
+  position: absolute;
+  top: -8.3%;
+  left: -33%;
+  z-index: 0; /*eixo de profundidade */
+}
+
+#about .image img {
+  position: relative; /*para a imagem  nao imprimir na frente da imagem principal usamos = position: relative;*/
+}
+
+#about .image img,
+#about .image::before {
+  border-radius: 0.25rem;
+}
+
+#about .text {
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/*===============   services   ===========================*/
+.cards.grid {
+  /*   aqui estou editando o card grid       */
+  gap: 1.5rem; /*   espaço    */
+}
+
+.card {
+  padding: 3.625rem 2rem; /*  aqui estou editando  os espaços das caixas*/
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08); /* aqui estou editando a caixas dos cards */
+  border-bottom: 0.25rem solid var(--base-color);
+  border-radius: 0.25rem 0.25rem 0 0; /*    aqui estou editando as dobrinhas de cima das caixinhas  */
+  text-align: center; /*    para alinhar os textos ao meio  */
+}
+
+.card i {
+  /* aqui eu estou editando os icones dos card que estao atribuidos com i */
+  display: block; /* block porque vou ocupar a linha toda*/
+  margin-bottom: 1.5rem; /*   tamanho dos card (das caixinhas)         */
+  font-size: 5rem; /*   tamanho da font do icone    */
+  color: var(--base-color); /* cor dos icones */
+}
+
+.card .title {
+  /*   aqui estou editando o texto */
+  font-size: 1.5rem; /*     tamanho da font do texto             */
+  margin-bottom: 0.75rem; /*    aqui estou editando a margin do titulo com o texto do card  */
+}
+
+/*============== testimonials = depoimentos   */
+#testimonials {
+  background: white; /*a cor de tras da pag*/
+}
+
+#testimonials .container {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#testimonials header {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-bottom: 0;
+}
+
+#testimonials blockquote {
+  padding: 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0.08);
+  border-radius: 0.25rem;
+}
+
+#testimonials blockquote p {
+  position: relative; /*    aqui estou editando a posição do texto*/
+  text-indent: 1.875rem;
+  margin-bottom: 1.5rem;
+  color: var(--title-color);
+}
+
+#testimonials blockquote p span {
+  font: 700 2.5rem serif;
+  position: absolute; /*   aqui estou editandado a posição do caracter especial */
+  top: -0.9rem; /* aqui estou editando a altura do caracter especial */
+  left: -1.875rem; /*aqui estou editando os lados da posição do caracter especial*/
+  color: var(--base-color);
+}
+
+#testimonials cite {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+}
+
+#testimonials cite img {
+  width: 2rem; /*  editando o tamanho das img dentro do cite*/
+  height: 2rem; /*     altura    */
+  object-fit: cover; /*  esse comando serve para cobrir os espaçinhos da imagem (não sei muito bem como funciona ainda...)      */
+  clip-path: circle();
+  /* esse comando serve para deixar as imagens circulares */
+  margin-right: 0.5rem; /*     aqui estou fazendo a margin da dirreita da foto (fazendo um espacinho do nome e da img)*/
+}
+/*   preciso arrumar  */
+/* swiper  */
+.swiper-slide {
+  height: auto;
+  padding: 4rem 1rem;
+}
+
+/*.swiper-pagination-bullet {
+  width: 0.75rem;
+  height: 0.75rem;
+}*/
+
+.swiper-pagination-bullet-active {
+  background: var(--base-color);
+}
+
+/*     CONTACT   = contato    */
+#contact .grid {
+  gap: 4rem; /*aqui estou fazando o espaçamento de tudo q está antes do grid*/
+}
+
+#contact .text p {
+  margin-bottom: 2rem; /*para separar a variavel (a) do text e o titulo*/
+}
+
+#contact .button i,
+#contact ul li i {
+  font-size: 1.5rem;
+  margin-right: 0.625rem; /* aqui estou fazendo o espaço do icone do boatão e o "entrar em contato"*/
+}
+
+#contact ul.grid {
+  gap: 2rem; /*aqui estou editando o espaço de tudo que esta dentro do ul grid*/
+}
+
+#contact ul li {
+  display: flex; /*aqui estou alinhando tudo ao centro*/
+  align-items: center;
+}
+
+#contact ul li i {
+  color: var(--base-color);
+}
+
+/*        FOOTER                                  */
+footer {
+  background: var(--base-color);
+}
+
+footer.section{
+  padding:4rem 0;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand p {
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+footer i {
+  font-size: 1.5rem;
+  color: black;
+}
+
+footer .social a {
+  margin-right: 2rem;
+  transition: 0.3s;
+  display: inline-block;
+  /*aqui para se eu quiser editar o lugar dos icones*/
+}
+
+footer .social a:hover {
+  transform: translatey(-15px); /* preciso entender melhor ...*/
+} 
+
+.back-to-top {
+  background: var(--base-color);
+  color: var(--text-color-light);
+
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+
+  padding: 0.5rem;
+  clip-path: circle();
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: 0.3s;
+  transform: translatey(100%);
+}
+
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translatey(0);
+}
+/*==========aqui serve para editar o site para outros dispositivos==============*/
+
+/*========= MEDIA QUERIES =========*/
+/* extra large devices: 1200 > */
+@media (min-width: 1200px) {
+  /* reusable classes */
+ .container {
+   max-width: 1600px;
+   margin-left: auto;
+   margin-right: auto;
+}
+  .section {
+   padding: 10rem 0;
+}
+
+.section header, 
+#testimonials header {
+  max-width: 32rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  height: 3.125rem;
+}
+
+/* navegation */
+  nav .menu{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav.menu ul li a.title {
+    font: 400 1rem var(--body-font);
+  }
+
+  nav .icon-menu {
+   display: none
+  }
+
+/* layout */
+main {
+  margin-top: var(--header-height);
+ }
+
+
+/* home */
+
+  #home .container {
+   grid-auto-flow: column;
+   justify-content: space-between;
+   margin: 0 auto;
+  }
+
+  #home .image {
+   order: 1;
+  }
+
+  #home .text {
+   order: 0;
+   max-width: 24rem;
+   text-align: left;
+  }
+
+ /* about   */
+ #about .container  {
+   margin: 0 auto;
+   grid-auto-flow: column;
+ }
+
+ /* services */
+ .cards {
+   grid-template-columns: 1fr 1fr 1fr;
+ }
+
+ .card {
+   padding-left: 3rem;
+   padding-right: 3rem;
+ }
+
+ /*testimonials*/
+ #testimonials .container {
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ /* contact */
+ #contact .container {
+   grid-auto-flow: column;
+   align-items: center;
+ }
+
+ /*footer*/
+ footer.section {
+   padding: 3.75rem 0;
+ }
+
+ footer .container {
+   grid-auto-flow: column;
+   align-items: center;
+   justify-content: space-between;
+ }
+
+ footer .logo {
+   font-size: 3rem;       /* tamanho da logo */
+ }
+
+
+ #contact .text {
+   max-width: 25rem;
+ }
+ 
+}
+/* large devices: 1023 > */
+/* large devices: 992 > */
+@media (min-width: 992px) {
+  :root {
+    --title-font-size: 2.25rem;
+    --subtitle-font-size: 1.125rem;
+  }
+}
+/* medium devices: 767 > *
