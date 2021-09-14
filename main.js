@@ -44,7 +44,7 @@ window.addEventListener('scroll', function() {
  keyboard: true,
  breakpoints: {
    767: {
-     slidesPerView:1,
+     slidesPerView:2,
      setwrapperSize: true
    }
  }
