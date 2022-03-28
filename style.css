@@ -446,19 +446,19 @@ nav.show div.icon-x {
   margin-right: 0.5rem; /*     aqui estou fazendo a margin da dirreita da foto (fazendo um espacinho do nome e da img)*/
 }
 /*   preciso arrumar  */
-/* swiper  */
+/* swiper para desktop so esta funcionando certinho no mobile  */
 .swiper-slide {
   height: auto;
-  padding: 4rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 
-/*.swiper-pagination-bullet {
+.swiper-pagination-bullet {
   width: 0.75rem;
   height: 0.75rem;
-}*/
+}
 
 .swiper-pagination-bullet-active {
-  background: var(--base-color);
+  color:  red;
 }
 
 /*     CONTACT   = contato    */
