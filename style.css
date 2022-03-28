@@ -449,7 +449,7 @@ nav.show div.icon-x {
 /* swiper para desktop so esta funcionando certinho no mobile  */
 .swiper-slide {
   height: auto;
-  padding: 0.5rem 0.5rem;
+  padding: 4rem 1rem;
 }
 
 .swiper-pagination-bullet {
@@ -458,7 +458,7 @@ nav.show div.icon-x {
 }
 
 .swiper-pagination-bullet-active {
-  color:  red;
+  color: var(--base-color);
 }
 
 /*     CONTACT   = contato    */
